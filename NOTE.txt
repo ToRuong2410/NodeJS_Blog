@@ -1,0 +1,3 @@
+FIXME: 
+    hỗ trợ cập nhật node mà không cần phải chạy lại lệnh: npm i nodemon
+    
