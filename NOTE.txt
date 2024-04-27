@@ -1,3 +1,27 @@
+TODO: Link final NodeJS: https://github.com/sondnpt00343/nodejs_blog.git
+
 FIXME: 
-    hỗ trợ cập nhật node mà không cần phải chạy lại lệnh: npm i nodemon
-    
+    npm i nodemon: hỗ trợ cập nhật node mà không cần phải chạy lại lệnh
+    npm i morgan: hỗ trợ hiển thị log cho biết là request gửi lên node sever có hay không
+
+TODO: ========== Template engine (handlebars) ==========
+npm i express-handlebars: sử dụng HTML trong node
+
+Express-handlebars là một template engine được sử dụng phổ biến trong việc phát triển ứng 
+dụng web với Express.js, một framework phổ biến của Node.js cho việc xây dựng các ứng dụng web. 
+Express-handlebars cho phép bạn tạo ra các template động dựa trên dữ liệu và render chúng ra các 
+trang web hoặc các phần tử giao diện người dùng.
+
+TODO: ========== Cấu hình file tĩnh css, image và cấu hình processor sass ========== #10
+node-sass ban đầu được cài đặt nhưng không được hỗ trợ những năm gần đây
+-> cài đặt sang sass khác
+
+Cài câu lệnh trong package.json:
+    "watch": "sass --watch src/resources/scss/:src/public/css/ --style compressed"
+
+-> nhằm lắng nghe thay đổi từ các file scss để thực hiện thay đổi trên web
+(do file main.hbs nhận link từ app.css mà app.css lại được revert từ file app.scss sang, 
+khi app.scss lấy giá trị biến từ file _variables nhưng có thay đổi trên web
+!vấn đề: thay đổi file _variables mà không có thay đổi trên web nên cần sử dụng lệnh trên 
+để thực hiện lắng nghe thay đổi từ các file scss liên quan trong folder nhằm khi reload lại 
+trang web thì có thay đổi mới)
