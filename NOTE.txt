@@ -25,3 +25,66 @@ khi app.scss lấy giá trị biến từ file _variables nhưng có thay đổi
 !vấn đề: thay đổi file _variables mà không có thay đổi trên web nên cần sử dụng lệnh trên 
 để thực hiện lắng nghe thay đổi từ các file scss liên quan trong folder nhằm khi reload lại 
 trang web thì có thay đổi mới)
+
+TODO: ========== Query parameters ========== #14
+VD:
+    localhost:3000/search?q=hoidanit&author=toruong
+
+TODO: ========== Method ==========
+GET: sử dụng trong TH muốn nhận dữ liệu từ phía server (máy chủ) về phía client (người dùng)
+POST: gửi dữ liệu từ client (người dùng) lên phía server (máy chủ)
+
+TODO: ========== Mô hình MVC ========== #18 #19
+được sử dụng khi xây dựng những ứng dụng chạy ở BE
+
+---web server thường được coi là một phần của lớp Controller hoặc đôi khi có thể liên kết 
+trực tiếp với lớp Controller:
+    1. Routing và Dispatching:
+        Web server đóng vai trò là điểm đầu tiên mà yêu cầu từ client được nhận vào ứng dụng. 
+    Nó sẽ xử lý yêu cầu đó và phân loại nó vào các tác vụ cụ thể tương ứng với các URL đã được 
+    định tuyến (routing).
+        Điều này thường được thực hiện thông qua các cơ chế định tuyến (routing mechanisms) 
+    như Express.js trong Node.js hoặc các framework tương tự trong các ngôn ngữ và môi 
+    trường phát triển web khác.
+    2. Xử lý HTTP Requests:
+        Web server chịu trách nhiệm tiếp nhận các yêu cầu HTTP từ client và gửi chúng đến 
+    Controller tương ứng để xử lý.
+        Controller sẽ phân tích yêu cầu, xác định hành động cần thực hiện, và sau đó gọi các 
+    phương thức tương ứng trong Model để lấy hoặc cập nhật dữ liệu.
+    3. Định Tuyến (Routing):
+        Web server quản lý việc định tuyến yêu cầu HTTP đến các controller hoặc hành động 
+    cụ thể trong ứng dụng dựa trên các URL được yêu cầu.
+        Ví dụ, khi một yêu cầu GET được gửi đến '/users', web server sẽ định tuyến yêu cầu 
+    này đến một controller phù hợp để xử lý danh sách người dùng.
+
+---hai cách sử dụng app.use("/news", newsRouter) và app.get("/news", newsRouter) đều được sử dụng 
+để kết nối một router (trong trường hợp này là newsRouter)
+
+1. app.use("/news", newsRouter):
+    - Điểm mạnh của cách này là bạn có thể áp dụng middleware và xử lý đa phương thức HTTP trên 
+    cùng một URL.
+    - Định nghĩa này sẽ kết nối newsRouter với mọi tuyến đường con của "/news", 
+    ví dụ "/news/latest", "/news/popular", v.v. Bất kỳ yêu cầu nào bắt đầu với "/news" sẽ được 
+    định tuyến qua newsRouter.
+    - Điều này cho phép bạn xử lý các tác vụ đa dạng liên quan đến tin tức, bao gồm cả việc lấy 
+    dữ liệu (GET), cập nhật (PUT, PATCH), thêm mới (POST), hoặc xoá (DELETE).
+2. app.get("/news", newsRouter):
+    - Điểm mạnh của cách này là nó chỉ xử lý yêu cầu GET tới "/news". Các yêu cầu với phương 
+    thức HTTP khác như POST, PUT, DELETE sẽ không được xử lý.
+    - Điều này hữu ích khi bạn chỉ muốn xử lý các yêu cầu GET đơn giản và không muốn xử lý các 
+    phương thức HTTP khác trên cùng một URL.
+    - Nếu bạn muốn áp dụng logic xử lý cho nhiều phương thức HTTP, bạn sẽ cần phải định nghĩa 
+    các tuyến đường (routes) riêng biệt cho mỗi phương thức.
+
+TODO: ========== Mongoose ==========
+Mongoose là (object model driver for MongoDB) trình điều khiển - đứng giữa khi NodeJS làm việc 
+với MongoDB giúp làm việc chặt chẽ, dễ dàng hơn.
+Mongoose được thiết kế để hoạt động trong môi trường bất đồng bộ
+
+    FIXME: npm install mongoose
+
+    --- Tạo model cho courses được tạo ra ở MongoDB
+Schema trong MongooseJS là định nghĩa cho cấu trúc dữ liệu của một tài liệu (document) 
+trong MongoDB. Nó xác định các trường (fields) và kiểu dữ liệu của chúng, cũng như các 
+ràng buộc (constraints), mặc định (defaults), và các tùy chọn khác liên quan đến cách dữ 
+liệu được lưu trữ và kiểm tra hợp lệ.
