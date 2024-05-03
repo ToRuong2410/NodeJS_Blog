@@ -88,3 +88,8 @@ Schema trong MongooseJS là định nghĩa cho cấu trúc dữ liệu của m�
 trong MongoDB. Nó xác định các trường (fields) và kiểu dữ liệu của chúng, cũng như các 
 ràng buộc (constraints), mặc định (defaults), và các tùy chọn khác liên quan đến cách dữ 
 liệu được lưu trữ và kiểm tra hợp lệ.
+
+    --- Cài thư viện 
+    FIXME: npm install mongoose-slug-generator
+    npm install mongoose-slug-updater --save (thay thế cho cái trên)
+-> dùng để chuyển đổi kiểu cho tên cho slug

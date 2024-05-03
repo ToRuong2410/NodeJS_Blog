@@ -26,9 +26,13 @@
   },
   "homepage": "https://github.com/ToRuong2410/NodeJS_Blog#readme",
   "dependencies": {
+    "bootstrap": "^5.3.3",
+    "cors": "^2.8.5",
     "express": "^4.19.2",
     "express-handlebars": "^7.1.2",
     "mongoose": "^8.3.3",
+    "mongoose-slug-generator": "^1.0.4",
+    "mongoose-slug-updater": "^3.3.0",
     "morgan": "^1.10.0",
     "node-sass": "^9.0.0",
     "sass": "^1.75.0"

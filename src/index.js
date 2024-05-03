@@ -4,13 +4,28 @@ const morgan = require('morgan')
 const handlebars = require('express-handlebars')
 const app = express()
 const port = 3000
+var cors = require('cors')
 
 const route = require('./routes')
 const db = require('./config/db')
 // Connect to DB
 db.connect()
 
-// Kiểm tra các đường link trong phần static cung cấp -> để hiện thị
+// kích hoạt chính sách Same-Origin Policy - một cơ chế bảo mật trình duyệt web
+// mà giới hạn các truy cập từ các trang web khác origin (gốc) để truy cập tài nguyên của một trang web.
+app.use(cors())
+
+// trỏ đến thư mục tĩnh
+app.use(
+  '/bootstrap/js',
+  express.static(path.join(__dirname, '../node_modules/bootstrap/dist/js'))
+)
+app.use(
+  '/bootstrap/css',
+  express.static(path.join(__dirname, '../node_modules/bootstrap/dist/css'))
+)
+
+// Kiểm tra các đường link trong phần static cung cấp -> để hiển thị
 app.use(express.static(path.join(__dirname, 'public')))
 
 // Middleware này giúp Express hiểu được dữ liệu được gửi từ form thông
